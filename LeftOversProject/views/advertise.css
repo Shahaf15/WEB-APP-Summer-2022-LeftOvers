@@ -1,0 +1,35 @@
+:root{
+    --Mblack: #040f0f;
+    --MyDarkGreen:#16521f;
+     --MyDarkGray:#656665 ;
+     --MyLightGreen:#509561; 
+     --MyLightGrey:#b8d0b8;
+}
+ *{
+    font-family: 'Acme', sans-serif;
+    
+}
+
+ .mainBody {
+    background: var(--MyLightGrey);
+    /*background: linear-gradient(to Bottom, var(--MyLightGrey), var(--MyLightGreen));*/
+  }
+
+.headline {
+    font-family: 'Acme', sans-serif;
+    font-weight: bold;
+    font-size: xx-large;
+    
+}
+
+.btn-login{
+    background-color: var(--MyDarkGreen) !important;
+    color: aliceblue !important;
+  }
+
+.select {
+    width: 19rem;
+    align-content: center;
+    text-align: center;
+}
+

@@ -1,0 +1,33 @@
+:root{
+    --Mblack: #040f0f;
+    --MyDarkGreen:#16521f;
+     --MyDarkGray:#656665 ;
+     --MyLightGreen:#509561; 
+     --MyLightGrey:#b8d0b8;
+}
+ *{
+    font-family: 'Acme', sans-serif;  
+ }
+
+.headline {
+    font-family: 'Acme', sans-serif;
+    font-weight: bold;
+    font-size: xx-large;
+    
+}
+#headlineContainer{
+  border-color: var(--Mblack);
+  border-bottom: 2px solid;
+  margin-top: 2%;
+}
+
+.mainBody {
+    background: var(--MyLightGrey);
+    /*background: linear-gradient(to Bottom, var(--MyLightGrey), var(--MyLightGreen));*/
+  }
+
+  .btn{
+    background-color: var(--MyDarkGreen) !important;
+    color: white !important;
+  }
+
