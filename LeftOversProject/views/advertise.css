@@ -1,9 +1,10 @@
-:root{
-    --Mblack: #040f0f;
-    --MyDarkGreen:#16521f;
-     --MyDarkGray:#656665 ;
-     --MyLightGreen:#509561; 
-     --MyLightGrey:#b8d0b8;
+:root {
+  --Mblack: #040f0f;
+  --MyDarkGreen: #16521f;
+  --MyDarkGray: #656665;
+  --MyLightGreen: #509561;
+  --MyLightGrey: #b8d0b8;
+  --MyWhite: #edffed;
 }
  *{
     font-family: 'Acme', sans-serif;
@@ -21,11 +22,21 @@
     font-size: xx-large;
     
 }
+.navbar{
+  background-color: var(--MyWhite);
+}
+.btn {
+  transition: 0.5s background ease-in-out !important;
+  color: var(--MyWhite);
+}
 
-.btn-login{
-    background-color: var(--MyDarkGreen) !important;
-    color: aliceblue !important;
-  }
+.btn-login {
+  background-color: var(--MyDarkGreen);
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+
+}
 
 .select {
     width: 19rem;
