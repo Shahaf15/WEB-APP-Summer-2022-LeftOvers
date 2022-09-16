@@ -6,25 +6,36 @@
   --MyLightGrey: #b8d0b8;
   --MyWhite: #edffed;
 }
- *{
-    font-family: 'Acme', sans-serif;
-    
+
+* {
+  font-family: 'Acme', sans-serif;
+
 }
 
- .mainBody {
-    background: var(--MyLightGrey);
-    /*background: linear-gradient(to Bottom, var(--MyLightGrey), var(--MyLightGreen));*/
-  }
+.mainBody {
+  background: var(--MyLightGrey);
+  /*background: linear-gradient(to Bottom, var(--MyLightGrey), var(--MyLightGreen));*/
+}
+
+.imgBack {
+  background-image: url(../resources/Background.jpg);
+  position: fixed;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+
+}
 
 .headline {
-    font-family: 'Acme', sans-serif;
-    font-weight: bold;
-    font-size: xx-large;
-    
+  font-family: 'Acme', sans-serif;
+  font-weight: bold;
+  font-size: xx-large;
+
 }
-.navbar{
+
+.navbar {
   background-color: var(--MyWhite);
 }
+
 .btn {
   transition: 0.5s background ease-in-out !important;
   color: var(--MyWhite);
@@ -39,8 +50,16 @@
 }
 
 .select {
-    width: 19rem;
-    align-content: center;
-    text-align: center;
+  width: 19rem;
+  align-content: center;
+  text-align: center;
 }
 
+#imgSeek {
+  max-width: 80%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--MyLightGreen);
+}

@@ -18,9 +18,16 @@
 
 }
 
+.imgBack {
+  background-image: url(../resources/Background.jpg);
+  position: fixed;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+
+}
+
 body {
   background: var(--MyLightGrey);
-
 }
 
 .navbar{
