@@ -1,0 +1,69 @@
+#omef {
+    color: aqua;
+}
+
+/*body {
+    background-color: rgb(184, 170, 184);
+}*/
+
+div~p {
+    background-color: aliceblue;
+}
+
+form:hover {
+    background-color: blue;
+}
+
+p::first-letter {
+    font-size: 30pt
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    margin: 1px;
+    font-size: 20px;
+    background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pri-beresheet.co.il%2Ffruits%2Fpeach%2F&psig=AOvVaw03etp3vDP-tMF3oBRcrCYk&ust=1664813400162000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCLir1Kz3wfoCFQAAAAAdAAAAABAD");
+
+}
+#container {
+    display: grid;
+    grid-template-areas: 
+    'header header header header header'
+    'menu main main right right'
+    'menu footer footer footer footer';
+}
+
+#item1 {
+    grid-area: header;
+    background-color: aqua;
+    height: 25vh;
+    animation-name: aquaBlink;
+    animation-duration: 2s;
+    animation-iteration-count: 4;
+    animation-timing-function: ease-in-out;
+}
+
+#item2 {
+    grid-area: menu;
+    background-color: blue;
+    height: 50vh;
+}
+
+#item3 {
+    grid-area: main;
+    background-color: gold;
+    height: 25vh;
+}
+#item4 {
+    grid-area: right;
+    background-color: lightcoral;
+    height: 25vh;
+}
+
+#item5 {
+    grid-area: footer;
+    background-color: darkcyan;
+    height: 25vh;
+
+}
