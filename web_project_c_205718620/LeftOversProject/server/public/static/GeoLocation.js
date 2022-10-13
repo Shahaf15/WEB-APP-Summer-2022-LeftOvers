@@ -11,6 +11,8 @@ function getLocation() {
 function showPosition(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
+    document.getElementById("long").value = longitude;
+    document.getElementById("lat").value = latitude;
     console.log("lat: " + latitude + " lng: " + longitude);
 }
 
