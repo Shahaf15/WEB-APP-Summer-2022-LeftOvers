@@ -24,12 +24,13 @@ app.get('/main', (req, res) => {
 })
 
 app.get('/advertise', (req, res) => {
-  res.sendFile(path.join(__dirname, "/views/advertise.html"))
+  res.render('advertise', {});
 })
 
-app.get('/seek', (req, res) => {
-  res.sendFile(path.join(__dirname, "/views/seekLeftOvers.html"))
-})
+app.get('/seek', (req, res, next) => {
+  //res.render('seekLeftOvers', {});
+  next();
+}, CRUD_operations.seekLO);
 
 app.post('/Login', (CRUD_operations.loginUser));
 
@@ -38,8 +39,7 @@ app.post('/signup', (CRUD_operations.createNewUser));
 app.post('/advertise', (req, res,next) => {
   let advertiseInfo = req.body;
   if (validAdv.CheckFields(advertiseInfo)) {
-    console.log("hey");
-    //res.redirect('/main');
+    console.log("info is valid");
     next();
   }
   else {

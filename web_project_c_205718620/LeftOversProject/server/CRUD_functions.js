@@ -1,5 +1,7 @@
 const sql = require("./db.js");
 const validAdv = require('./ValidAdvertise.js');
+//const calcDistance = require('./distance');
+const calcDistance = require('haversine-distance')
 var long = 0.0;
 var lat = 0.0;
 var ownerId = 0;
@@ -96,4 +98,43 @@ const createNewAdv = function (req, res) {
     });
 };
 
-module.exports = { createNewUser, loginUser, createNewAdv};
+
+const seekLO = function (req, res) {
+    // Validate request
+    if (!req.body) {
+        res.status(400).send({
+            message: "Content can not be empty!"
+        });
+        return;
+    }
+    const seek = "SELECT * FROM leftoversdb.advertises WHERE date > date_sub(now(), interval 3 day);"
+    var vaildDistance = [];
+    sql.query(seek, (err, records) => {
+        if (err) {
+            console.log("error: ", err);
+            res.status(400).send({ message: "error in Login user: " + err });
+            return;
+        }
+        if(records.length > 0){
+            //console.log(records);
+            for (let i=0; i<records.length; i++){
+                if(records[i].ownerId != ownerId)
+                {
+                    let a = {lat: records[i].latitude , lng: records[i].longtitude}
+                    let b = {lat: lat , lon: long}
+                    console.log(calcDistance(a,b));
+                    if(calcDistance(a,b) <= 5000.0){
+                        vaildDistance.push(records[i]);
+                        console.log("test");
+                    }
+                }
+            }
+            console.log(vaildDistance);
+            res.render('seekLeftOvers' , {Seek: vaildDistance});
+            return;
+        }
+        
+    });
+};
+
+module.exports = { createNewUser, loginUser, createNewAdv, seekLO};
