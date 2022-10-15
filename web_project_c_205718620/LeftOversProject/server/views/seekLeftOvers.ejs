@@ -34,14 +34,14 @@
                     <div class="card border-0 shadow rounded-3 my-5">
                         <div class="card-body p-4 p-sm-5">
                             <h3 class="card-title text-center mb-5 fw-light fs text headline">LeftOvers - Seek</h3>
-                            <div id="carouselExampleControls" class="carousel carousel-dark slide"
+                            <div id="carouselExampleControls" class="carousel carousel-dark slide carousel-fade"
                                 data-interval="false">
                                     <% if (Seek.length> 0){ %>
                                         <% for( let i=0; i<Seek.length; i++){ %>
                                             <% if(i==0){ %> 
-                                                <div class="carousel-item active">
+                                                <div class="carousel-item active bg-body">
                                             <%}else{%>
-                                                <div class="carousel-item">
+                                                <div class="carousel-item bg-body">
                                             <%}%> 
                                                 <div class="card-wrapper text-center">
                                                     <img src="images/searchLeftOvers.jpg" class="card-img-top"
@@ -71,7 +71,7 @@
                                                         <p class="card-text">
                                                             <%= Seek[i].details %>
                                                         </p>
-                                                        <button type="button" class="btn btn-login"
+                                                        <button type="button" class="btn btn-login" data-bs-trigger="focus"
                                                             data-bs-toggle="popover" title="Phone Number"
                                                             data-bs-content=<%=Seek[i].phone %>>Click
                                                             to show the Phone number</button>
