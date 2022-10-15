@@ -1,79 +1,112 @@
 <%- include('advSeekHeader') -%>
 
-<body class="mainBody">
-    <img src="images/Background.jpg" class="imgBack img-fluid" alt="">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-1 h1" id="brocoloImg">
-                <img src="images/broccoli_1f966.ico" alt="Logo" width="30" height="24"
-                    class="d-inline-block align-text-top">
-                LeftOvers</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/main">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/advertise">Advertise</a>
-                    </li>
-                </ul>
+    <body class="mainBody">
+        <img src="images/Background.jpg" class="imgBack img-fluid" alt="">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-1 h1" id="brocoloImg">
+                    <img src="images/broccoli_1f966.ico" alt="Logo" width="30" height="24"
+                        class="d-inline-block align-text-top">
+                    LeftOvers</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/main">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/advertise">Advertise</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
-                <div class="card border-0 shadow rounded-3 my-5">
-                    <div class="card-body p-4 p-sm-5">
-                        <h3 class="card-title text-center mb-5 fw-light fs text headline">LeftOvers - Seek</h3>
-                        <div id="carouselExampleControls" class="carousel carousel-dark slide" data-interval="false">
-                            <div class="carousel carousel-dark slide">
-                                <div class="carousel-item active">
-                                    <div class="card-wrapper text-center">
-                                        <img src="images/searchLeftOvers.jpg" class="card-img-top" alt="unusedPic"
-                                            id="imgSeek">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Name</h5>
-                                            <p class="card-text">Details about the Leftovers</p>
-                                            <button type="button" class="btn btn-login" data-bs-toggle="popover"
-                                                title="Phone Number" data-bs-content="This is the phone number">Click
-                                                to show the Phone number</button>
-                                        </div>
-                                    </div>
-                                </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
+                    <div class="card border-0 shadow rounded-3 my-5">
+                        <div class="card-body p-4 p-sm-5">
+                            <h3 class="card-title text-center mb-5 fw-light fs text headline">LeftOvers - Seek</h3>
+                            <div id="carouselExampleControls" class="carousel carousel-dark slide"
+                                data-interval="false">
+                                    <% if (Seek.length> 0){ %>
+                                        <% for( let i=0; i<Seek.length; i++){ %>
+                                            <% if(i==0){ %> 
+                                                <div class="carousel-item active">
+                                            <%}else{%>
+                                                <div class="carousel-item">
+                                            <%}%> 
+                                                <div class="card-wrapper text-center">
+                                                    <img src="images/searchLeftOvers.jpg" class="card-img-top"
+                                                        alt="unusedPic" id="imgSeek">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                                                            <%= Seek[i].fullname %>
+                                                        </h5>
+                                                        <% if (Seek[i].vegtebales == 'on'){ %>
+                                                            <h6 style="display: inline-block">
+                                                                Vegtables:
+                                                                <small class="text-muted">Checked. </small>
+                                                              </h6>
+                                                            <%}%>
+                                                        <% if (Seek[i].hommade == 'on'){ %>
+                                                            <h6 style="display: inline-block">
+                                                                Homemade Food:
+                                                                <small class="text-muted">Checked. </small>
+                                                              </h6>
+                                                            <%}%>
+                                                        <% if (Seek[i].other == 'on'){ %>
+                                                            <h6 style="display: inline-block">
+                                                                Other:
+                                                                <small class="text-muted">Checked. </small>
+                                                              </h6>
+                                                            <%}%> 
+                                                        <p class="card-text">
+                                                            <%= Seek[i].details %>
+                                                        </p>
+                                                        <button type="button" class="btn btn-login"
+                                                            data-bs-toggle="popover" title="Phone Number"
+                                                            data-bs-content=<%=Seek[i].phone %>>Click
+                                                            to show the Phone number</button>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <%}%>
+                                                <%}%>
                             </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+        </div>
 
-    <script>//this is for the popover when click on the button at the bottom
-        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-            return new bootstrap.Popover(popoverTriggerEl)
-        })
-    </script>
+        <script>//this is for the popover when click on the button at the bottom
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl)
+            })
+        </script>
 
-</body>
+    </body>
 
-</html>
+    </html>

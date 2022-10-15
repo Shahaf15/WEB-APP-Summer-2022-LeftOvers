@@ -107,7 +107,7 @@ const seekLO = function (req, res) {
         });
         return;
     }
-    const seek = "SELECT * FROM leftoversdb.advertises WHERE date > date_sub(now(), interval 3 day);"
+    const seek = "select a.id, a.vegtebales, a.hommade, a.other, a.date, a.details, a.longtitude, a.latitude, a.ownerId, u.fullname, u.phone from leftoversdb.advertises as a join leftoversdb.users as u where date > date_sub(now(), interval 2 day) and a.ownerId = u.id;"
     var vaildDistance = [];
     sql.query(seek, (err, records) => {
         if (err) {
