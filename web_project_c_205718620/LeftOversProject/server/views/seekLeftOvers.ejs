@@ -25,6 +25,9 @@
                             <a class="nav-link" href="/advertise">Advertise</a>
                         </li>
                     </ul>
+                    <span class="navbar-text text-end" id="hello">
+                        Hello <%= User[0].fullname %>
+                    </span>
                 </div>
             </div>
         </nav>
@@ -36,68 +39,77 @@
                             <h3 class="card-title text-center mb-5 fw-light fs text headline">LeftOvers - Seek</h3>
                             <div id="carouselExampleControls" class="carousel carousel-dark slide carousel-fade"
                                 data-interval="false">
-                                    <% if (Seek.length> 0){ %>
-                                        <% for( let i=0; i<Seek.length; i++){ %>
-                                            <% if(i==0){ %> 
-                                                <div class="carousel-item active bg-body">
-                                            <%}else{%>
-                                                <div class="carousel-item bg-body">
-                                            <%}%> 
-                                                <div class="card-wrapper text-center">
-                                                    <img src="images/searchLeftOvers.jpg" class="card-img-top"
-                                                        alt="unusedPic" id="imgSeek">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">
-                                                            <%= Seek[i].fullname %>
-                                                        </h5>
-                                                        <% if (Seek[i].vegtebales == 'on'){ %>
-                                                            <h6 style="display: inline-block">
-                                                                Vegtables:
-                                                                <small class="text-muted">Checked. </small>
-                                                              </h6>
-                                                            <%}%>
-                                                        <% if (Seek[i].hommade == 'on'){ %>
-                                                            <h6 style="display: inline-block">
-                                                                Homemade Food:
-                                                                <small class="text-muted">Checked. </small>
-                                                              </h6>
-                                                            <%}%>
-                                                        <% if (Seek[i].other == 'on'){ %>
-                                                            <h6 style="display: inline-block">
-                                                                Other:
-                                                                <small class="text-muted">Checked. </small>
-                                                              </h6>
-                                                            <%}%> 
-                                                        <p class="card-text">
-                                                            <%= Seek[i].details %>
-                                                        </p>
-                                                        <button type="button" class="btn btn-login" data-bs-trigger="focus"
-                                                            data-bs-toggle="popover" title="Phone Number"
-                                                            data-bs-content=<%=Seek[i].phone %>>Click
-                                                            to show the Phone number</button>
+                                <% if (Seek.length> 0){ %>
+                                    <% for( let i=0; i<Seek.length; i++){ %>
+                                        <% if(i==0){ %>
+                                            <div class="carousel-item active bg-body">
+                                                <%}else{%>
+                                                    <div class="carousel-item bg-body">
+                                                        <%}%>
+                                                            <div class="card-wrapper text-center">
+                                                                <img src="images/searchLeftOvers.jpg"
+                                                                    class="card-img-top" alt="unusedPic" id="imgSeek">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">
+                                                                        <%= Seek[i].fullname %>
+                                                                    </h5>
+                                                                    <% if (Seek[i].vegtebales=='on' ){ %>
+                                                                        <h6 style="display: inline-block">
+                                                                            Vegtables:
+                                                                            <small class="text-muted">Checked. </small>
+                                                                        </h6>
+                                                                        <%}%>
+                                                                            <% if (Seek[i].hommade=='on' ){ %>
+                                                                                <h6 style="display: inline-block">
+                                                                                    Homemade Food:
+                                                                                    <small class="text-muted">Checked.
+                                                                                    </small>
+                                                                                </h6>
+                                                                                <%}%>
+                                                                                    <% if (Seek[i].other=='on' ){ %>
+                                                                                        <h6
+                                                                                            style="display: inline-block">
+                                                                                            Other:
+                                                                                            <small
+                                                                                                class="text-muted">Checked.
+                                                                                            </small>
+                                                                                        </h6>
+                                                                                        <%}%>
+                                                                                            <p class="card-text">
+                                                                                                <%= Seek[i].details %>
+                                                                                            </p>
+                                                                                            <button type="button"
+                                                                                                class="btn btn-login"
+                                                                                                data-bs-trigger="focus"
+                                                                                                data-bs-toggle="popover"
+                                                                                                title="Phone Number"
+                                                                                                data-bs-content=<%=Seek[i].phone
+                                                                                                %>>Click
+                                                                                                to show the Phone
+                                                                                                number</button>
+                                                                </div>
+
+                                                            </div>
+
                                                     </div>
-
-                                                </div>
-
+                                                    <%}%>
+                                                        <%}%>
                                             </div>
-                                            <%}%>
-                                                <%}%>
+                                            <button class="carousel-control-prev" type="button"
+                                                data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button"
+                                                data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
                             </div>
-                            <button class="carousel-control-prev" type="button"
-                                data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button"
-                                data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <script>//this is for the popover when click on the button at the bottom

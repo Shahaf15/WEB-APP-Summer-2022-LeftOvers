@@ -1,10 +1,11 @@
 const sql = require("./db.js");
 const validAdv = require('./ValidAdvertise.js');
 //const calcDistance = require('./distance');
-const calcDistance = require('haversine-distance')
+const calcDistance = require('haversine-distance');
 var long = 0.0;
 var lat = 0.0;
 var ownerId = 0;
+var User = [];
 const createNewUser = function (req, res) {
     // Validate request
     if (!req.body) {
@@ -49,11 +50,14 @@ const loginUser = function (req, res) {
             return;
         }
         if(records.length > 0){
+            console.log(records);
             long = req.body.long;
             lat = req.body.lat;
             ownerId = records[0].id;
+            User.unshift(records[0]);
             console.log("long: "+long+" lat: "+lat);
-            res.render('main' , {User: records[0]});
+            console.log(User);
+            res.render('main' , {User});
             return;
         }
         
@@ -92,7 +96,7 @@ const createNewAdv = function (req, res) {
         }
         else{
         console.log("created advertise: ", {AdvDetails: newAdv });
-        res.render('main');
+        res.render('main', {User});
         return;
         }
     });
@@ -125,16 +129,15 @@ const seekLO = function (req, res) {
                     console.log(calcDistance(a,b));
                     if(calcDistance(a,b) <= 5000.0){
                         vaildDistance.push(records[i]);
-                        console.log("test");
                     }
                 }
             }
             console.log(vaildDistance);
-            res.render('seekLeftOvers' , {Seek: vaildDistance});
+            res.render('seekLeftOvers' , {Seek: vaildDistance, User});
             return;
         }
         
     });
 };
 
-module.exports = { createNewUser, loginUser, createNewAdv, seekLO};
+module.exports = { createNewUser, loginUser, createNewAdv, seekLO, User};

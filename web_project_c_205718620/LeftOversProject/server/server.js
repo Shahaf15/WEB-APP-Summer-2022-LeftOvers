@@ -20,11 +20,11 @@ app.get('/signup', (req, res) => {
 })
 
 app.get('/main', (req, res) => {
-  res.render("main", {});
+  res.render("main", {User: CRUD_operations.User});
 })
 
 app.get('/advertise', (req, res) => {
-  res.render('advertise', {});
+  res.render('advertise', {User: CRUD_operations.User});
 })
 
 app.get('/seek', (req, res, next) => {
