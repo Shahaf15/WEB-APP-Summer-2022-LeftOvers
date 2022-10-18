@@ -57,8 +57,12 @@ const loginUser = function (req, res) {
             User.unshift(records[0]);
             console.log("long: "+long+" lat: "+lat);
             console.log(User);
-            res.render('main' , {User});
+            res.render('main' , {User, Answer: ""});
             return;
+        }
+        else{
+            console.log("Something went wrong try again");
+            res.render('Login', {Answer: "Something went wrong try again"});
         }
         
     });
@@ -96,7 +100,7 @@ const createNewAdv = function (req, res) {
         }
         else{
         console.log("created advertise: ", {AdvDetails: newAdv });
-        res.render('main', {User});
+        res.render('main', {User, Answer: ""});
         return;
         }
     });
@@ -132,9 +136,19 @@ const seekLO = function (req, res) {
                     }
                 }
             }
-            console.log(vaildDistance);
-            res.render('seekLeftOvers' , {Seek: vaildDistance, User});
-            return;
+            if(vaildDistance.length > 0){
+                console.log(vaildDistance);
+                res.render('seekLeftOvers' , {Seek: vaildDistance, User});
+                return; 
+            }
+            else{
+                console.log("There is no Leftovers around");
+                res.render('main', {Answer: "Sorry, there is no LeftOvers around"});
+            }
+        }
+        else{
+            console.log("There is no Leftovers around");
+            res.render('main', {Answer: "Sorry, there is no LeftOvers around"});
         }
         
     });

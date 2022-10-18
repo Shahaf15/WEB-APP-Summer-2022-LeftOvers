@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 
 
 app.get('/Login', (req, res) => {
-  res.render('Login', {});
+  res.render('Login', {Answer: ""});
 })
 
 app.get('/signup', (req, res) => {
@@ -20,7 +20,7 @@ app.get('/signup', (req, res) => {
 })
 
 app.get('/main', (req, res) => {
-  res.render("main", {User: CRUD_operations.User});
+  res.render("main", {User: CRUD_operations.User, Answer: ""});
 })
 
 app.get('/advertise', (req, res) => {
