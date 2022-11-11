@@ -1,14 +1,35 @@
 const express = require('express')
 const bodyParser = require("body-parser");
-const CRUD_operations = require("./CRUD_functions.js");
+const CreateDB = require('./db/CreateDB');
+const CRUD_operations = require("./db/CRUD_functions.js");
+//const fileUpload = require('express-fileupload');
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 const app = express()
 const port = 3000
 const path = require('path');
-const validAdv = require('./ValidAdvertise.js');
+const validAdv = require('./db/ValidAdvertise.js');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
+
+
+app.get('/CreateTable1',CreateDB.CreateTable1);
+
+app.get('/CreateTable1',CreateDB.CreateTable2);
+
+app.get("/InsertData1", CreateDB.InsertData1);
+
+app.get('/ShowTable1', CreateDB.ShowTable1);
+
+app.get('/DropTable1', CreateDB.DropTable1);
+
+app.get("/InsertData2", CreateDB.InsertData2);
+
+app.get('/ShowTable2', CreateDB.ShowTable2);
+
+app.get('/DropTable2', CreateDB.DropTable2);
 
 
 app.get('/Login', (req, res) => {
@@ -36,8 +57,9 @@ app.post('/Login', (CRUD_operations.loginUser));
 
 app.post('/signup', (CRUD_operations.createNewUser));
 
-app.post('/advertise', (req, res,next) => {
+app.post('/advertise', upload.single('picture'), (req, res,next) => {
   let advertiseInfo = req.body;
+  console.log(req.file, req.body)
   if (validAdv.CheckFields(advertiseInfo)) {
     console.log("info is valid");
     next();

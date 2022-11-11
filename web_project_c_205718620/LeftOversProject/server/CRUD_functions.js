@@ -1,6 +1,8 @@
-const sql = require("./db.js");
-const validAdv = require('./ValidAdvertise.js');
-//const calcDistance = require('./distance');
+const sql = require("./db/db.js");
+const validAdv = require('./db/ValidAdvertise.js');
+//const fileUpload = require('express-fileupload');
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 const calcDistance = require('haversine-distance');
 var long = 0.0;
 var lat = 0.0;
@@ -115,7 +117,7 @@ const seekLO = function (req, res) {
         });
         return;
     }
-    const seek = "select a.id, a.vegtebales, a.hommade, a.other, a.date, a.details, a.longtitude, a.latitude, a.ownerId, u.fullname, u.phone from leftoversdb.advertises as a join leftoversdb.users as u where date > date_sub(now(), interval 2 day) and a.ownerId = u.id;"
+    const seek = "select a.id, a.vegtebales, a.hommade, a.other, a.date, a.details, a.longtitude, a.latitude, a.ownerId, u.fullname, u.phone from leftoversdb.advertises as a join leftoversdb.users as u where date > date_sub(now(), interval 7 day) and a.ownerId = u.id;"
     var vaildDistance = [];
     sql.query(seek, (err, records) => {
         if (err) {
@@ -127,7 +129,7 @@ const seekLO = function (req, res) {
             //console.log(records);
             for (let i=0; i<records.length; i++){
                 if(records[i].ownerId != ownerId)
-                {
+                {//distance calculation, the results that shown will be only up to 5 KM from the user Who is search
                     let a = {lat: records[i].latitude , lng: records[i].longtitude}
                     let b = {lat: lat , lon: long}
                     console.log(calcDistance(a,b));

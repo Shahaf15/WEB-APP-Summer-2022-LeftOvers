@@ -1,0 +1,29 @@
+CREATE TABLE users(
+	id INT NOT NULL auto_increment,
+	email VARCHAR(255) NOT NULL,
+	fullname VARCHAR(255) NOT NULL,
+	password VARCHAR(255) NOT NULL,
+	phone VARCHAR(255) NOT NULL,
+	PRIMARY KEY(id));
+
+select * from leftoversdb.users
+
+DROP TABLE leftoversdb.users
+
+CREATE TABLE advertises(
+	id INT NOT NULL auto_increment,
+	vegtebales VARCHAR(255),
+	hommade VARCHAR(255),
+	other VARCHAR(255),
+	date DATE NOT NULL,
+	details VARCHAR(255),
+	longtitude double,
+	latitude double,
+	ownerId INT not null,
+	PRIMARY KEY(id));
+
+ADD FOREIGN KEY (ownerId) REFERENCES leftoversdb.users(id);
+
+select * from leftoversdb.advertises;
+
+DROP TABLE leftoversdb.advertises;
